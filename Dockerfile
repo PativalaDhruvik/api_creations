@@ -8,13 +8,13 @@ ENV PYTHONUNBUFFERED=1
 # Set working directory inside container
 WORKDIR /app
 
-# Install dependencies
+# Copy requirements and install dependencies
 COPY requirements.txt /app/
 RUN pip install --upgrade pip && \
     pip install --no-cache-dir -r requirements.txt
 
-# Copy project code
-COPY . /app/
+# Copy application code
+COPY mysite /app/
 
 # Expose port 8000 for Django development server
 EXPOSE 8000
